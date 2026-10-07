@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cream Shelf — your library, spine by spine</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="top">
+    <div class="brand">
+      <span class="logo" aria-hidden="true"><i></i><i></i><i></i></span>
+      <div>
+        <h1>Cream Shelf</h1>
+        <p>Your personal reading collection</p>
+      </div>
+    </div>
+    <button class="btn primary" id="openAdd">+ Add book</button>
+  </header>
+
+  <section class="stats" id="stats" aria-label="Library statistics"></section>
+
+  <section class="toolbar">
+    <input id="search" type="search" placeholder="Search title, author or genre…" aria-label="Search books" />
+    <div class="seg" role="tablist" aria-label="Shelve by">
+      <span class="seg-label">Shelve by</span>
+      <button class="active" data-by="genre">Genre</button>
+      <button data-by="author">Author</button>
+      <button data-by="status">Status</button>
+      <button data-by="year">Year</button>
+    </div>
+  </section>
+
+  <main class="layout">
+    <div id="shelves" class="shelves" aria-live="polite"></div>
+
+    <aside id="detail" class="detail empty" aria-label="Book details">
+      <div class="placeholder">
+        <div class="ph-icon">📖</div>
+        <h2>Pick a spine</h2>
+        <p>Select any book on the shelves to see its title, author, genre and a short description.</p>
+      </div>
+      <article class="card" hidden>
+        <button class="close" id="closeDetail" aria-label="Close details">×</button>
+        <div class="cover" id="dCover"><span id="dCoverTitle"></span></div>
+        <p class="genre-tag" id="dGenre"></p>
+        <h2 id="dTitle"></h2>
+        <p class="by" id="dAuthor"></p>
+        <p class="desc" id="dDesc"></p>
+        <dl class="meta">
+          <div><dt>Year</dt><dd id="dYear"></dd></div>
+          <div><dt>Pages</dt><dd id="dPages"></dd></div>
+          <div><dt>Status</dt><dd id="dStatus"></dd></div>
+          <div><dt>Rating</dt><dd id="dRating"></dd></div>
+        </dl>
+        <button class="btn danger" id="deleteBook">Remove from shelf</button>
+      </article>
+    </aside>
+  </main>
+
+  <dialog id="addDialog">
+    <form id="addForm" method="dialog">
+      <h3>Add a book</h3>
+      <label>Title <input name="title" required /></label>
+      <label>Author <input name="author" required /></label>
+      <label>Genre <input name="genre" required list="genreList" /></label>
+      <datalist id="genreList"></datalist>
+      <label>Description <textarea name="description" rows="3"></textarea></label>
+      <div class="row">
+        <label>Year <input name="year" type="number" /></label>
+        <label>Pages <input name="pages" type="number" /></label>
+      </div>
+      <div class="row">
+        <label>Status
+          <select name="status">
+            <option>Want to read</option><option>Reading</option><option>Read</option>
+          </select>
+        </label>
+        <label>Rating (0-5) <input name="rating" type="number" min="0" max="5" value="0" /></label>
+      </div>
+      <div class="actions">
+        <button type="button" class="btn" id="cancelAdd">Cancel</button>
+        <button type="submit" class="btn primary">Save</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>
