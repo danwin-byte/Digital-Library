@@ -182,3 +182,6 @@ dialog input, dialog textarea, dialog select {
   .detail.empty { display: none; }
   .close { display: block; }
 }
+
+#readBook { display: inline-block; text-decoration: none; text-align: center; margin-bottom: 10px; }
+#readBook[hidden] { display: none; }
