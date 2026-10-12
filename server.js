@@ -10,6 +10,7 @@ const MONGO_URI = process.env.MONGO_URI || "mongodb://127.0.0.1:27017/cream_shel
 
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
+app.use("/books", express.static(path.join(__dirname, "books")));
 
 const GROUP_FIELDS = ["genre", "author", "status", "year"];
 

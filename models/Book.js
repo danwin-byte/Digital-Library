@@ -14,6 +14,7 @@ const bookSchema = new mongoose.Schema(
       default: "Want to read",
     },
     rating: { type: Number, min: 0, max: 5, default: 0 },
+    filePath: { type: String, default: "", trim: true },
   },
   { timestamps: true }
 );

@@ -115,6 +115,13 @@ function showDetail(id) {
   $("#dPages").textContent = b.pages || "–";
   $("#dStatus").textContent = b.status;
   $("#dRating").textContent = b.rating ? "★".repeat(b.rating) + "☆".repeat(5 - b.rating) : "Unrated";
+  const read = $("#readBook");
+  if (b.filePath) {
+    read.href = "/" + b.filePath.replace(/^\/+/, "");
+    read.hidden = false;
+  } else {
+    read.hidden = true;
+  }
 }
 
 function hideDetail() {
